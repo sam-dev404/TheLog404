@@ -125,7 +125,7 @@ function CopyToClipboard() {
   const copyText = document.getElementById("model").textContent;
   const textArea = document.createElement("textarea");
   textArea.textContent = copyText;
-  document.body.append(textArea);
+  document.getElementById("collector").appendChild(textArea);
   textArea.select();
   document.execCommand("copy");
 
@@ -1191,12 +1191,18 @@ function resertModule() {
         }
       }
 
-      if (y.value != "" || b.value != "" || model.innerHTML != "") {
+      if (
+        y.value != "" ||
+        b.value != "" ||
+        model.innerHTML != "" ||
+        takeInfo.innerHTML != ""
+      ) {
         document.getElementById("y").value = "";
         document.getElementById("b").value = "";
         model.innerHTML = "";
+        takeInfo.innerHTML = "";
         if (calorado != 0) {
-          takeInfo.innerHTML = "";
+          calorado = 0;
         }
 
         //css recovery
